@@ -1,0 +1,89 @@
+
+.process-container {
+ 
+  background: #5e55555f;
+  color: rgb(0, 0, 0);
+  height: 120vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.detailer-container {
+  height: 90%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+.book-detailer {
+  width: 50%;
+  height: 100%;
+}
+.user-detailer {
+  width: 50%;
+  height: 100%;
+  padding: 1vmax;
+}
+.user-detailer > div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 10%;
+  margin: 2px;
+}
+.user-detailer > div > h4 {
+  width: 48%;
+}
+.user-detailer > div:last-child {
+  height: 25%;
+}
+.user-detailer > div > img {
+  height: 100%;
+  aspect-ratio: 16/9;
+  object-fit: contain;
+
+}
+.book-detailer > div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 10%;
+}
+.book-detailer > div > h4 {
+  width: 48%;
+}
+
+.book-detailer > div:last-child {
+  height: 20%;
+}
+
+.img-process > img {
+  height: 100%;
+  /* width: 40%; */
+  object-fit: contain;
+  aspect-ratio: 16/9;
+}
+
+.process-detailer {
+  height: 9%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+margin-top: 10px;
+}
+
+.process-detailer > button {
+  margin: 2vmax;
+  height: 3vmax;
+}
+.ab {
+  width: 50%;
+}
+
+.db {
+  width: 20%;
+}

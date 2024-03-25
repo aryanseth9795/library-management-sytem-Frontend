@@ -1,0 +1,21 @@
+.logout{
+    min-height: 80vh;
+    width:100%;
+}
+.logout>h1{
+    margin: auto;
+    color: rgb(18, 18, 185);
+}
+@media screen and (max-width: 600px) {
+    .logout{
+        width:100%;
+       height: 100vh;
+    }
+    .logout>h1{
+        margin: auto;
+        color: rgb(18, 18, 185);
+    }
+    .logout>span{
+        color: rgb(18, 18, 185);
+    }
+}
