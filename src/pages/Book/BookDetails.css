@@ -31,18 +31,18 @@
 
 .CarouselImage {
   width: 50%;
-  aspect-ratio: 3/2;
+  aspect-ratio: 12/14;
   object-fit: contain;
   mix-blend-mode: color-burn;
 }
 
 .detailsBlock-1 > h2 {
-  color: rgb(54, 54, 54);
-  font: 600 1.6vmax "Roboto";
+  color: rgb(255, 0, 0);
+  font: 600 2vmax "Roboto";
 }
 
 .detailsBlock-1 > p {
-  color: rgba(54, 54, 54, 0.582);
+  color: rgb(0, 187, 255);
   font: 200 0.6vmax cursive;
 }
 
@@ -50,15 +50,15 @@
   width: 70%;
 }
 
-.detailsBlock-3 > h1 {
-  color: rgba(17, 17, 17, 0.795);
-  font: 400 1.8vmax "Franklin Gothic Medium";
+.detailsBlock-3 > h3 {
+  color: rgba(0, 31, 236, 0.795);
+  font: 400 1.4vmax "Franklin Gothic Medium";
   margin: 1vmax 0;
 }
 .detailsBlock-3-1 {
   display: flex;
   align-items: center;
-  /* justify-content: center; */
+  justify-content: center;
 }
 .detailsBlock-3-1>button{
   width: 20vmax;
@@ -116,7 +116,9 @@
 }
 
 .detailsBlock-4 {
-  color: rgba(0, 0, 0, 0.897);
+  /* color: rgba(0, 0, 0, 0.897); */
+  color: rgb(10, 121, 218);
+
   font: 500 1.2vmax sans-serif;
 }
 
@@ -143,12 +145,18 @@
   .ProductDetails {
     flex-direction: column;
     height: unset;
+    padding: 2vmax;
   }
 
   .ProductDetails > div:last-child {
     align-items: center;
   }
-
+  .CarouselImage {
+    width: 80%;
+    aspect-ratio: 12/11;
+    object-fit: contain;
+    mix-blend-mode: color-burn;
+  }
   .detailsBlock-1 > h2 {
     font-size: 2.8vmax;
     text-align: center;
@@ -207,6 +215,6 @@
   }
 
   .detailsBlock-4 > p {
-    font: 100 0.2vmax sans-serif;
+    font: 50 0.1vmax sans-serif;
   }
 }
