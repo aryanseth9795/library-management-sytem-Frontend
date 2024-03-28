@@ -47,7 +47,7 @@ function App() {
     if (localStorage.getItem('token')) {
       store.dispatch(loadUser(localStorage.getItem('token')));
     }
-  }, [token]);
+  }, []);
   window.addEventListener("contextmenu", (e) => e.preventDefault());
 
   return (
