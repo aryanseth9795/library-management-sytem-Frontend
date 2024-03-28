@@ -333,7 +333,6 @@ export const updatetoadmin=(token,id,role)=>async(dispatch)=>{
         token: `${token}`,
       },
     };
-    console.log(token)
     const { data } = await axios.put(
       `/api/v1/admin/user/${id}`,{role},
       config

@@ -31,11 +31,8 @@ const options = {
   SearchIconUrl: "/search",
   profileIconColor: "green",
   searchIconColor: "green",
-  cartIconColor: "rgba(35, 35, 35,0.8)",
   profileIconColorHover: "#eb4034",
   searchIconColorHover: "green",
-  cartIconColorHover: "#eb4034",
-  cartIconMargin: "1vmax",
   profileIcon:true,
   searchIcon:true, 
   searchIconMargin:"2.5vmax"

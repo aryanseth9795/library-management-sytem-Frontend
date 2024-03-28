@@ -36,7 +36,7 @@ import Myborrow from "./pages/Profile/Myborrow.js";
 import Userupdate from "./pages/Admin/Userupdate.js";
 import NotFound from "./Components/layouts/Not Found/NotFound.js"
 function App() {
-  const { token, user, isAuthenticated } = useSelector((state) => state.auth);
+  const {  user, isAuthenticated } = useSelector((state) => state.auth);
   useEffect(() => {
     WebFont.load({
       google: {
@@ -44,8 +44,8 @@ function App() {
       },
     });
 
-    if (token) {
-      store.dispatch(loadUser(token));
+    if (localStorage.getItem('token')) {
+      store.dispatch(loadUser(localStorage.getItem('token')));
     }
   }, [token]);
   window.addEventListener("contextmenu", (e) => e.preventDefault());
