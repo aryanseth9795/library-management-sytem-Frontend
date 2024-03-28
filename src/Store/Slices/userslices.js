@@ -6,7 +6,7 @@ const initialState = {
   isLoading: false,
   error: null,
   isAuthenticated:false,
-  token:localStorage.getItem('token'),
+  token:null,
   forget:null,
 };
 
