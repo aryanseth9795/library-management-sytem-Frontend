@@ -37,6 +37,7 @@ import Userupdate from "./pages/Admin/Userupdate.js";
 import NotFound from "./Components/layouts/Not Found/NotFound.js"
 function App() {
   const {  user, isAuthenticated } = useSelector((state) => state.auth);
+  const token=localStorage.getItem('token')
   useEffect(() => {
     WebFont.load({
       google: {
@@ -44,10 +45,10 @@ function App() {
       },
     });
 
-    if (localStorage.getItem('token')) {
-      store.dispatch(loadUser(localStorage.getItem('token')));
+    if (token) {
+      store.dispatch(loadUser(token));
     }
-  }, []);
+  }, [token]);
   window.addEventListener("contextmenu", (e) => e.preventDefault());
 
   return (
