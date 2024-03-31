@@ -35,6 +35,7 @@ import ProtectedRoute from "./Components/layouts/auth/ProtectedRoute.js";
 import Myborrow from "./pages/Profile/Myborrow.js";
 import Userupdate from "./pages/Admin/Userupdate.js";
 import NotFound from "./Components/layouts/Not Found/NotFound.js"
+import { toast } from "react-toastify";
 function App() {
   const {  user, isAuthenticated } = useSelector((state) => state.auth);
   const token=localStorage.getItem('token')
@@ -45,11 +46,15 @@ function App() {
       },
     });
 
-    if (token) {
-      store.dispatch(loadUser(token));
+    if (token && !user) {
+      try {
+        store.dispatch(loadUser(token));
+      } catch (error) {
+        toast.error(error)
+      }
     }
-  }, [token]);
-  window.addEventListener("contextmenu", (e) => e.preventDefault());
+  }, [token,user]);
+  
 
   return (
     <>
