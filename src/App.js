@@ -2,7 +2,7 @@ import "./App.css";
 import { React, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import WebFont from "webfontloader";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 // Loader
 import { loadUser } from "./Actions/useraction.js";
 import store from "./Store/store";
@@ -34,11 +34,12 @@ import UpdateProfile from "./pages/Profile/UpdateProfile.js";
 import ProtectedRoute from "./Components/layouts/auth/ProtectedRoute.js";
 import Myborrow from "./pages/Profile/Myborrow.js";
 import Userupdate from "./pages/Admin/Userupdate.js";
-import NotFound from "./Components/layouts/Not Found/NotFound.js"
+import NotFound from "./Components/layouts/Not Found/NotFound.js";
 import { toast } from "react-toastify";
 function App() {
-  const {  user, isAuthenticated } = useSelector((state) => state.auth);
-  const token=localStorage.getItem('token')
+  const { user, isAuthenticated } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+  const token = localStorage.getItem("token");
   useEffect(() => {
     WebFont.load({
       google: {
@@ -46,15 +47,24 @@ function App() {
       },
     });
 
-    if (token && !user) {
+    const loader = async () => {
       try {
-        store.dispatch(loadUser(token));
+        await dispatch(loadUser(token));
       } catch (error) {
-        toast.error(error)
+        toast.error(
+          error.message || "An error occurred while loading the user"
+        );
       }
-    }
-  }, [token,user]);
+    };
+
+    if (token && !user) {
+    loader();
   
+  
+  }
+
+
+  }, [token, user, dispatch]);
 
   return (
     <>
@@ -111,9 +121,9 @@ function App() {
             <Route exact path="/admin/Return/:id" element={<ProcessReturn />} />
             <Route exact path="/admin/books/new" element={<NewBook />} />
           </Route>
-            <Route exact path="/*" element={<NotFound />} />
+          <Route exact path="/*" element={<NotFound />} />
         </Routes>
-        {isAuthenticated &&  <Footer />}
+        {isAuthenticated && <Footer />}
       </Router>
     </>
   );
