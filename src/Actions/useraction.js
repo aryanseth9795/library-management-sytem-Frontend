@@ -58,8 +58,8 @@ export const registerUser = (myForm) => async (dispatch) => {
 };
 
 export const loadUser = (token) => async (dispatch) => {
+  dispatch(loaduserStart());
   try {
-    dispatch(loaduserStart());
     const config = {
       headers: {
         "Content-Type": "application/json",
@@ -67,14 +67,15 @@ export const loadUser = (token) => async (dispatch) => {
       },
     };
     const { data } = await axios.get("/api/v1/me", config);
-
     dispatch(loaduserSuccess(data.user));
+
   } catch (error) {
     if(error.response.data.message==="invalid token" || error.response.data.message==="jwt expired"){
       localStorage.setItem('token',"");
       // state.user=null;
     }
-    dispatch(loaduserFailure(error.response.data.message));
+    const errorMessage = error.response?.data?.message || error.message || 'An unexpected error occurred';
+    dispatch(loaduserFailure(errorMessage));
   }
 };
 
