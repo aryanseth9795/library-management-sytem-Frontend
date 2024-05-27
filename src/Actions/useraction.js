@@ -74,8 +74,16 @@ export const loadUser = (token) => async (dispatch) => {
       localStorage.setItem('token',"");
       // state.user=null;
     }
-    const errorMessage = error.response?.data?.message || error.message || 'An unexpected error occurred';
+    if(error.response?.data?.message || error.message ==="Request failed with status code 500"){
+
+      const errorMessage="Our Server Take 1 min to start Please Refresh two three times";
     dispatch(loaduserFailure(errorMessage));
+
+    }else{
+
+    const  errorMessage = error.response?.data?.message || error.message || 'An unexpected error occurred';
+    dispatch(loaduserFailure(errorMessage));
+    }
   }
 };
 

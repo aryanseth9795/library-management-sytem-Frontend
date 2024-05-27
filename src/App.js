@@ -59,8 +59,6 @@ function App() {
 
     if (token && !user) {
     loader();
-  
-  
   }
 
 
