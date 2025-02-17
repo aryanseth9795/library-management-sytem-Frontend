@@ -28,9 +28,12 @@ const LoginSignUp = () => {
     try {
       console.log("Checking Server Status");  
       const resp=await axios.get("https://library-management-sytem-backend.onrender.com");
-      if(resp) toast.success("Server is Online ! Go Ahead", { id: checkId });
+      if(resp) {
+        toast.dismiss(checkId);
+        toast.success("Server is Online", { id: checkId });
+      }
     } catch (error) {
-      console.log("error")
+      toast.dismiss(checkId);
       toast.error("Server is Down ! Please wait a moment", { id: checkId });
       await axios.get("https://library-management-sytem-backend.onrender.com");
     }
