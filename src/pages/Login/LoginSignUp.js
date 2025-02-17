@@ -14,9 +14,34 @@ import { toast } from "react-toastify";
 import { clearerrors } from "../../Store/Slices/userslices";
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
+import axios from "axios";
 const LoginSignUp = () => {
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+
+  const isServerOnline = async () => {
+    const checkId = toast.loading(
+      "Checking Server Status, Please Wait for a moment"
+    );
+    try {
+      console.log("Checking Server Status");  
+      const resp=await axios.get("https://library-management-sytem-backend.onrender.com");
+      if(resp) toast.success("Server is Online ! Go Ahead", { id: checkId });
+    } catch (error) {
+      console.log("error")
+      toast.error("Server is Down ! Please wait a moment", { id: checkId });
+      await axios.get("https://library-management-sytem-backend.onrender.com");
+    }
+  };
+  useEffect(() => {
+    isServerOnline();
+  }, []);
+
+
+
+
   const { isLoading, error, isAuthenticated } = useSelector(
     (state) => state.auth
   );
